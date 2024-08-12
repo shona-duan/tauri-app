@@ -6,7 +6,7 @@ This template should help get you started developing with Tauri and Kaplay in Vi
 
 *** js
 $ yarn dev
-***
+
 
 ## Recommended IDE Setup
 
