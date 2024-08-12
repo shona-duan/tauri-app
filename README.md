@@ -4,9 +4,10 @@ This template should help get you started developing with Tauri and Kaplay in Vi
 
 # Start
 
-*** js
+``` js
 $ yarn dev
 
+```
 
 ## Recommended IDE Setup
 
