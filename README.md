@@ -1,6 +1,12 @@
-# Tauri + React
+# Tauri + Kaplay
 
-This template should help get you started developing with Tauri and React in Vite.
+This template should help get you started developing with Tauri and Kaplay in Vite.
+
+# Start
+
+*** js
+$ yarn dev
+***
 
 ## Recommended IDE Setup
 
