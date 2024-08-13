@@ -1,8 +1,10 @@
 import { appWindow } from "@tauri-apps/api/window";
 import kaplay from "kaplay";
 
-import { makeBackground } from "./utils";
 import { SCAlE_FACTOR } from "./constants";
+
+import { makeBackground } from "./utils";
+import { makePlayer } from "./player";
 
 // 创建画布
 const k = kaplay({
@@ -68,6 +70,34 @@ k.scene("start", async () => {
 
   // 添加障碍物
   map.add([k.sprite("obstacles"), k.pos()]);
+
+  // 添加播放器
+  const player = k.add(makePlayer(k));
+  player.pos = k.vec2(k.center().x - 350, k.center().y + 50);
+
+  // 开始按钮
+  const playBtn = k.add([
+    k.rect(200, 50, { radius: 3 }),
+    k.color(k.Color.fromHex("#14638e")),
+    k.area(),
+    k.anchor("center"),
+    k.pos(k.center().x + 30, k.center().y + 60),
+  ]);
+
+  playBtn.add([
+    k.text("Play", { size: 24 }),
+    k.color(k.Color.fromHex("#d7f2f7")),
+    k.area(),
+    k.anchor("center"),
+  ]);
+
+  const goToGame = () => {
+    k.play("confirm"); // 播放确认音效
+    k.go("main");
+  };
+  playBtn.onClick(goToGame);
+  k.onKeyPress("space", goToGame);
+  k.onGamepadButtonDown("south", goToGame);
 });
 
 k.scene("main", async () => {});
